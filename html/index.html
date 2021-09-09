@@ -7,76 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
     <title>Epump Login Test</title>
+    <style>
+        .container {
+            height: 200px;
+            position: relative;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12;
+        }
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
-<body class="center">
-    <div class="header">
-        <h1>Test</h1>
+<body>
+    <div class="container">
+        <div class="vertical-center">
+            <h1>You may now return to <italic>Telegram.</italic></h1>
+            <h3>Use the /menu command to continue.</h3>
+        </div>
     </div>
-    <form id="sampleForm">
-        <div class="form-group">
-            <label for="ChatId">ChatId</label>
-            <input name="ChatId" type="number" class="type-2" id="ChatId" placeholder="000" min="0" max="1234567890"
-                required />
-        </div>
-        <div class="form-group">
-            <label for="EpumpId">Epump Id</label>
-            <input name="EpumpId" type="text" class="type-2" id="EpumpId" placeholder="1234567890" required />
-        </div>
-        <div class="form-group">
-            <label for="CompanyId">Company Id</label>
-            <input name="CompanyId" type="text" class="type-2" id="CompanyId" placeholder="0000-0000-0000-0000"
-                required />
-        </div>
-        <div class="form-group">
-            <label for="AuthKey">Auth Token</label>
-            <input name="AuthKey" type="text" class="type-2" id="AuthKey" placeholder="i'm an auth token" required />
-        </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-default" id="btnSubmit" onclick="Submit()">Login</button>
-        </div>
-    </form>
-</body>
-<script>
-    function Submit() {
-        const chatId = document.querySelector('#ChatId').value;
-        const epumpId = document.querySelector('#EpumpId').value;
-
-        const companyId = document.querySelector('#CompanyId').value;
-        const authKey = document.querySelector('#AuthKey').value;
-
-        const data = {
-            chatId,
-            epumpId,
-            companyId,
-            authKey
-        }
-        console.log(data)
-        fetch('https://epump-bot.herokuapp.com/register/epump', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                window.alert(data.message);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                window.alert(error.message);
-            });
-    }
-</script>
-
-</html>
-<footer>
-    This is a test page.
-</footer>
 </body>
 
 </html>
